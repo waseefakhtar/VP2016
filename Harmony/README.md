@@ -1,6 +1,6 @@
 # Harmony
 
-![Release v0.1](https://img.shields.io/badge/release-v0.1-orange.svg) ![Framework .NET](https://img.shields.io/badge/framework-.NET-brightgreen.svg) ![Platform Windows](https://img.shields.io/badge/platform-Windows-lightgrey.svg)
+![Framework .NET](https://img.shields.io/badge/framework-.NET-brightgreen.svg) ![Platform Windows](https://img.shields.io/badge/platform-Windows-lightgrey.svg) ![Release v0.1](https://img.shields.io/badge/release-v0.1-orange.svg)
 
 Harmony is a Windows desktop-based tool that let designers come up with pleasing Color Palettes and Swatches based on The Color Wheel and Color Rules.
 
