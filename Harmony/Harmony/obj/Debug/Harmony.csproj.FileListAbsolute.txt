@@ -1,0 +1,9 @@
+c:\users\saad\documents\visual studio 2015\Projects\Harmony\Harmony\bin\Debug\Harmony.exe.config
+c:\users\saad\documents\visual studio 2015\Projects\Harmony\Harmony\bin\Debug\Harmony.exe
+c:\users\saad\documents\visual studio 2015\Projects\Harmony\Harmony\bin\Debug\Harmony.pdb
+c:\users\saad\documents\visual studio 2015\Projects\Harmony\Harmony\obj\Debug\Harmony.csprojResolveAssemblyReference.cache
+c:\users\saad\documents\visual studio 2015\Projects\Harmony\Harmony\obj\Debug\Harmony.Form1.resources
+c:\users\saad\documents\visual studio 2015\Projects\Harmony\Harmony\obj\Debug\Harmony.Properties.Resources.resources
+c:\users\saad\documents\visual studio 2015\Projects\Harmony\Harmony\obj\Debug\Harmony.csproj.GenerateResource.Cache
+c:\users\saad\documents\visual studio 2015\Projects\Harmony\Harmony\obj\Debug\Harmony.exe
+c:\users\saad\documents\visual studio 2015\Projects\Harmony\Harmony\obj\Debug\Harmony.pdb
