@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<asmv1:assembly xsi:schemaLocation="urn:schemas-microsoft-com:asm.v1 assembly.adaptive.xsd" manifestVersion="1.0" xmlns:asmv1="urn:schemas-microsoft-com:asm.v1" xmlns="urn:schemas-microsoft-com:asm.v2" xmlns:asmv2="urn:schemas-microsoft-com:asm.v2" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:co.v1="urn:schemas-microsoft-com:clickonce.v1" xmlns:asmv3="urn:schemas-microsoft-com:asm.v3" xmlns:dsig="http://www.w3.org/2000/09/xmldsig#" xmlns:co.v2="urn:schemas-microsoft-com:clickonce.v2">
+  <asmv1:assemblyIdentity name="Harmony.exe" version="1.0.0.1" publicKeyToken="7a005d71f8cf6f28" language="neutral" processorArchitecture="msil" type="win32" />
+  <application />
+  <entryPoint>
+    <assemblyIdentity name="Harmony" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+    <commandLine file="Harmony.exe" parameters="" />
+  </entryPoint>
+  <trustInfo>
+    <security>
+      <applicationRequestMinimum>
+        <PermissionSet Unrestricted="true" ID="Custom" SameSite="site" />
+        <defaultAssemblyRequest permissionSetReference="Custom" />
+      </applicationRequestMinimum>
+      <requestedPrivileges xmlns="urn:schemas-microsoft-com:asm.v3">
+        <!--
+          UAC Manifest Options
+          If you want to change the Windows User Account Control level replace the 
+          requestedExecutionLevel node with one of the following.
+
+        <requestedExecutionLevel  level="asInvoker" uiAccess="false" />
+        <requestedExecutionLevel  level="requireAdministrator" uiAccess="false" />
+        <requestedExecutionLevel  level="highestAvailable" uiAccess="false" />
+
+         If you want to utilize File and Registry Virtualization for backward 
+         compatibility then delete the requestedExecutionLevel node.
+    -->
+        <requestedExecutionLevel level="asInvoker" uiAccess="false" />
+      </requestedPrivileges>
+    </security>
+  </trustInfo>
+  <dependency>
+    <dependentOS>
+      <osVersionInfo>
+        <os majorVersion="5" minorVersion="1" buildNumber="2600" servicePackMajor="0" />
+      </osVersionInfo>
+    </dependentOS>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="preRequisite" allowDelayedBinding="true">
+      <assemblyIdentity name="Microsoft.Windows.CommonLanguageRuntime" version="4.0.30319.0" />
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="ColorMine.dll" size="30720">
+      <assemblyIdentity name="ColorMine" version="1.1.3.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>/la0v3zan1zcp0LmoAW0wHiLCYO4c2IptBzjNeY4qQU=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <dependency>
+    <dependentAssembly dependencyType="install" allowDelayedBinding="true" codebase="Harmony.exe" size="152992">
+      <assemblyIdentity name="Harmony" version="1.0.0.0" language="neutral" processorArchitecture="msil" />
+      <hash>
+        <dsig:Transforms>
+          <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+        </dsig:Transforms>
+        <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+        <dsig:DigestValue>TVX6i2UE1xvUTPfVLeRQZWlUVDxm0rBtHg3ya1iaNOY=</dsig:DigestValue>
+      </hash>
+    </dependentAssembly>
+  </dependency>
+  <file name="Harmony.exe.config" size="184">
+    <hash>
+      <dsig:Transforms>
+        <dsig:Transform Algorithm="urn:schemas-microsoft-com:HashTransforms.Identity" />
+      </dsig:Transforms>
+      <dsig:DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" />
+      <dsig:DigestValue>jWVCngsqgsEdPtxOoE7SAK7f6h1++LmE6IqOl8/1R3A=</dsig:DigestValue>
+    </hash>
+  </file>
+<publisherIdentity name="CN=Saadi\Saad" issuerKeyHash="5815056030f529b572f2e732dfe9fbb0045d34ed" /><Signature Id="StrongNameSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>SZ85uQqKK96KTuA6EpXxkwJhpzDzXKvJegxgqQ8Jt98=</DigestValue></Reference></SignedInfo><SignatureValue>bld9nM6TlimWyeRF0wBeXWDgy3G+tsBxkx8O+bCWVd8w4KPM8yPvfCRawXf3yXeo5spNQBVgERINjuLPd+Xagz0xWAKvHh3tH2AXJUZRKTT4TrKlPfSYsPn9OZRJJZmcoEeLUFEpsyLE9nL4jctWiHlumyjEY86JKJxIH63HuKs=</SignatureValue><KeyInfo Id="StrongNameKeyInfo"><KeyValue><RSAKeyValue><Modulus>86yukYL5afEjV6G3uUAuWk/VSndPvhBCfsZfO5UzuGo+PS4DnkY/F9iLRcAL3ziuJF0JL7qi/VqFjJff10mkns81fdfd5SG5UD+ZfJnqysTKFTLx5cVoSjt1Vo8pY1ij9ASoimu9R+2FJspwlVdiNPsXDU3ImKzPtGiF8do8wC8=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><msrel:RelData xmlns:msrel="http://schemas.microsoft.com/windows/rel/2005/reldata"><r:license xmlns:r="urn:mpeg:mpeg21:2003:01-REL-R-NS" xmlns:as="http://schemas.microsoft.com/windows/pki/2005/Authenticode"><r:grant><as:ManifestInformation Hash="dfb7090fa9600c7ac9ab5cf330a7610293f195123ae04e8ade2b8a0ab9399f49" Description="" Url=""><as:assemblyIdentity name="Harmony.exe" version="1.0.0.1" publicKeyToken="7a005d71f8cf6f28" language="neutral" processorArchitecture="msil" type="win32" /></as:ManifestInformation><as:SignedBy /><as:AuthenticodePublisher><as:X509SubjectName>CN=Saadi\Saad</as:X509SubjectName></as:AuthenticodePublisher></r:grant><r:issuer><Signature Id="AuthenticodeSignature" xmlns="http://www.w3.org/2000/09/xmldsig#"><SignedInfo><CanonicalizationMethod Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /><SignatureMethod Algorithm="http://www.w3.org/2000/09/xmldsig#rsa-sha256" /><Reference URI=""><Transforms><Transform Algorithm="http://www.w3.org/2000/09/xmldsig#enveloped-signature" /><Transform Algorithm="http://www.w3.org/2001/10/xml-exc-c14n#" /></Transforms><DigestMethod Algorithm="http://www.w3.org/2000/09/xmldsig#sha256" /><DigestValue>qsbzwAn+fvW3kgmTZr3mI4ejKaOziOt88+L3cwfVPGY=</DigestValue></Reference></SignedInfo><SignatureValue>4j9/JXkcMYv++SKLenmlkCTi7dSxaCZPwUxzbeHpx91N0pJC4GYAfHwetdwAtpvzf64nKDOtKmIDVQ9hTlI1nQJ4u9+i0zhlXLnuaZUrdhwUzm2iuYCo4nOmfBK6XE5jEY3Ynb6nu3ePKZ/L2ofXYVxT3Kh8BoGcad94GkXts2o=</SignatureValue><KeyInfo><KeyValue><RSAKeyValue><Modulus>86yukYL5afEjV6G3uUAuWk/VSndPvhBCfsZfO5UzuGo+PS4DnkY/F9iLRcAL3ziuJF0JL7qi/VqFjJff10mkns81fdfd5SG5UD+ZfJnqysTKFTLx5cVoSjt1Vo8pY1ij9ASoimu9R+2FJspwlVdiNPsXDU3ImKzPtGiF8do8wC8=</Modulus><Exponent>AQAB</Exponent></RSAKeyValue></KeyValue><X509Data><X509Certificate>MIIBwTCCASqgAwIBAgIQL/lcO1SWL7BN5Aj9c+/FDzANBgkqhkiG9w0BAQsFADAfMR0wGwYDVQQDHhQAUwBhAGEAZABpAFwAUwBhAGEAZDAeFw0xNjA1MDExOTA5MjFaFw0xNzA1MDIwMTA5MjFaMB8xHTAbBgNVBAMeFABTAGEAYQBkAGkAXABTAGEAYQBkMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDzrK6Rgvlp8SNXobe5QC5aT9VKd0++EEJ+xl87lTO4aj49LgOeRj8X2ItFwAvfOK4kXQkvuqL9WoWMl9/XSaSezzV9193lIblQP5l8merKxMoVMvHlxWhKO3VWjyljWKP0BKiKa71H7YUmynCVV2I0+xcNTciYrM+0aIXx2jzALwIDAQABMA0GCSqGSIb3DQEBCwUAA4GBAOAzE6oBayeKZhYDOj61OHG88l8u9dRht97g+pWKtK7f4lfQ+9sDLiiUFHU3QT01bSq9JlBRTN3mDEQhtjIejUvk7VoIz5TDuoif3LwELnXbUGRe9dtkkdhg3JfTvrWIlX7WcCI8+dpDImb0S822DstNZViVF4JVB3H8DSlVouHE</X509Certificate></X509Data></KeyInfo></Signature></r:issuer></r:license></msrel:RelData></KeyInfo></Signature></asmv1:assembly>
