@@ -33,6 +33,11 @@ namespace Harmony
                 secondForm.hexText = label3.Text;
                 secondForm.rgbText = label2.Text;
                 secondForm.hslText = label1.Text;
+
+                secondForm.pictureBox1Color = clr;
+                secondForm.pictureBox2Color = clr;
+                secondForm.pictureBox4Color = clr;
+                secondForm.pictureBox5Color = clr;
             }
             catch { }
         }

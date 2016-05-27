@@ -20,12 +20,8 @@ namespace Harmony
 
             pictureBox3.BackColor = pictureBoxColor;
 
-          
-
-            
-
         }
-        
+
 
         public void UpdateColor(Color color, Label hexLabel, Label rgbLabel, Label hslLabel)
         {
@@ -47,6 +43,31 @@ namespace Harmony
             set { pictureBox3.BackColor = value; }
         }
 
+        public Color pictureBox1Color
+        {
+            get { return pictureBox1.BackColor; }
+            set { pictureBox1.BackColor = value; }
+        }
+
+        public Color pictureBox2Color
+        {
+            get { return pictureBox2.BackColor; }
+            set { pictureBox2.BackColor = value; }
+        }
+
+        public Color pictureBox4Color
+        {
+            get { return pictureBox4.BackColor; }
+            set { pictureBox4.BackColor = value; }
+        }
+
+        public Color pictureBox5Color
+        {
+            get { return pictureBox5.BackColor; }
+            set { pictureBox5.BackColor = value; }
+        }
+
+
         public String hexText
         {
             get { return label3.Text; }
@@ -67,21 +88,367 @@ namespace Harmony
 
         private void pictureBox3_Click(object sender, EventArgs e)
         {
-            Color color1 = Color.FromArgb(pictureBoxColor.R - 30, pictureBoxColor.G - 30, pictureBoxColor.B - 30);
-            pictureBox1.BackColor = color1;
-            UpdateColor(color1, label7, label8, label9);
+            try
+            {
+                //PictureBox 1
+                int rPictureBox1, gPictureBox1, bPictureBox1;
+                float pictureBox1Hue = pictureBox1Color.GetHue();
+                float pictureBox1Saturation = pictureBox1Color.GetSaturation();
+                float pictureBox1Value = pictureBox1Color.GetBrightness();
 
-            Color color2 = Color.FromArgb(pictureBoxColor.R - 60, pictureBoxColor.G - 60, pictureBoxColor.B - 60);
-            pictureBox2.BackColor = color2;
-            UpdateColor(color1, label4, label5, label6);
+                addHue(pictureBox1Hue, 0);
+                addValueOverflowCap(pictureBox1Saturation, 0);
+                addValueOverflowFlip(pictureBox1Value, 30);
 
-            Color color4 = Color.FromArgb(pictureBoxColor.R / 2, pictureBoxColor.G / 2, pictureBoxColor.B / 2);
-            pictureBox4.BackColor = color4;
-            UpdateColor(color4, label10, label11, label12);
+                HsvToRgb(pictureBox1Hue, pictureBox1Saturation, pictureBox1Value, out rPictureBox1, out gPictureBox1, out bPictureBox1);
+                Color color1 = Color.FromArgb(rPictureBox1, gPictureBox1, bPictureBox1);
+                pictureBox1.BackColor = color1;
+                UpdateColor(color1, label7, label8, label9);
 
-            Color color5 = Color.FromArgb(pictureBoxColor.R / 3, pictureBoxColor.G / 3, pictureBoxColor.B / 3);
-            pictureBox5.BackColor = color5;
-            UpdateColor(color5, label13, label14, label15);
+                //PictureBox 2
+                int rPictureBox2, gPictureBox2, bPictureBox2;
+                float pictureBox2Hue = pictureBox2Color.GetHue();
+                float pictureBox2Saturation = pictureBox2Color.GetSaturation();
+                float pictureBox2Value = pictureBox2Color.GetBrightness();
+
+                addHue(pictureBox2Hue, 0);
+                addValueOverflowFlip(pictureBox2Saturation, -30);
+                addValueOverflowSlow(pictureBox2Value, 10, brake: 50);
+
+                HsvToRgb(pictureBox2Hue, pictureBox2Saturation, pictureBox2Value, out rPictureBox2, out gPictureBox2, out bPictureBox2);
+                Color color2 = Color.FromArgb(rPictureBox2, gPictureBox2, bPictureBox2);
+                pictureBox2.BackColor = color2;
+                UpdateColor(color2, label4, label5, label6);
+            
+                //PictureBox 4
+                int rPictureBox4, gPictureBox4, bPictureBox4;
+                float pictureBox4Hue = pictureBox4Color.GetHue();
+                float pictureBox4Saturation = pictureBox4Color.GetSaturation();
+                float pictureBox4Value = pictureBox4Color.GetBrightness();
+
+                addHue(pictureBox4Color.GetHue(), 0);
+                addValueOverflowFlip(pictureBoxColor.GetSaturation(), -30);
+                addValueOverflowFlip(pictureBoxColor.GetBrightness(), 30);
+
+                HsvToRgb(pictureBox4Hue, pictureBox4Saturation, pictureBox4Value, out rPictureBox4, out gPictureBox4, out bPictureBox4);
+                Color color4 = Color.FromArgb(rPictureBox4, gPictureBox4, bPictureBox4);
+                pictureBox4.BackColor = color4;
+                UpdateColor(color4, label10, label11, label12);
+
+                //PictureBox 5
+                int rPictureBox5, gPictureBox5, bPictureBox5;
+                float pictureBox5Hue = pictureBox5Color.GetHue();
+                float pictureBox5Saturation = pictureBox5Color.GetSaturation();
+                float pictureBox5Value = pictureBox5Color.GetBrightness();
+
+                addHue(pictureBox5Hue, 0);
+                addValueOverflowCap(pictureBox5Saturation, 0);
+                addValueOverflowOppose(pictureBox5Value, 60, roffs: 20);
+
+                HsvToRgb(pictureBox5Hue, pictureBox5Saturation, pictureBox5Value, out rPictureBox5, out gPictureBox5, out bPictureBox5);
+                Color color5 = Color.FromArgb(rPictureBox5, gPictureBox5, bPictureBox5);
+                pictureBox5.BackColor = color5;
+                UpdateColor(color5, label13, label14, label15);
+            }
+            catch (Exception e1)
+            {
+                MessageBox.Show("Error: " + e1.Message + " Please pick your color again.");
+            }
+        }
+
+        private float addValueOverflowBounce(float v, float add, float cap = 100, float lcap = 0, float min = -1, float max = -1)
+        {
+            float w = v + add;
+
+            if (min > -1 && w < min) { w = min; }
+            if (max > -1 && w > max) { w = max; }
+
+            //If we overflow, need to subtract overflow amount
+            if (w > cap)
+                return cap - (w - cap);
+            else if (w < cap)
+                return lcap + (lcap - w);
+            return w;
+        }
+
+        private float addValueOverflowCap(float v, float add, float cap = 100, float min = -1, float max = -1)
+        {
+            float w = v + add;
+
+            if (min > -1 && w < min) { w = min; }
+            if (max > -1 && w > max) { w = max; }
+            
+            if (w > cap)
+                return cap;
+            else if (w < 0)
+                return 0;
+            return w;
+        }
+
+        private float addValueOverflowFlip(float v, float add, float cap = 100, float lcap = 0, float min = -1, float max = -1)
+        {
+            float w = v + add;
+
+            if (min > -1 && w < min) { w = min; }
+            if (max > -1 && w > max) { w = max; }
+
+            //If we overflow, need to subtract instead
+            if (w > cap || w < cap)
+                return v - add;
+            return w;
+        }
+
+        private float addValueOverflowSlow(float v, float add, float cap = 100, float lcap = 0, float min = -1, float max = -1, float brake = -1)
+        {
+            float w = v + add;
+
+            if (min > -1 && w < min) { w = min; }
+            if (max > -1 && w > max) { w = max; }
+
+            float b = brake > -1 ? brake : Math.Abs(add);
+
+            //Stop us from overflowing by slowing add down (by 50%) as we approach cap.
+            if (w > cap - b)
+                return v - add;
+            return w;
+        }
+
+        private float addValueOverflowOppose(float v, float add, float cap = 100, float roffs = 0)
+        {
+            float w = v + add;
+            if (w > cap) { w = (roffs + w) % cap; }
+            return w;
+        }
+
+        private float addHue(float h, float add)
+        {
+            return (360 + h + add) % 360;
+        }
+
+        void HsvToRgb(double h, double S, double V, out int r, out int g, out int b)
+        {
+
+            double H = h;
+            while (H < 0) { H += 360; };
+            while (H >= 360) { H -= 360; };
+            double R, G, B;
+            if (V <= 0)
+                { R = G = B = 0; }
+            else if (S <= 0)
+            {
+                R = G = B = V;
+            }
+            else
+            {
+                double hf = H / 60.0;
+                int i = (int)Math.Floor(hf);
+                double f = hf - i;
+                double pv = V * (1 - S);
+                double qv = V * (1 - S * f);
+                double tv = V * (1 - S * (1 - f));
+                switch (i)
+                {
+
+                    // Red is the dominant color
+
+                    case 0:
+                        R = V;
+                        G = tv;
+                        B = pv;
+                        break;
+
+                    // Green is the dominant color
+
+                    case 1:
+                        R = qv;
+                        G = V;
+                        B = pv;
+                        break;
+                    case 2:
+                        R = pv;
+                        G = V;
+                        B = tv;
+                        break;
+
+                    // Blue is the dominant color
+
+                    case 3:
+                        R = pv;
+                        G = qv;
+                        B = V;
+                        break;
+                    case 4:
+                        R = tv;
+                        G = pv;
+                        B = V;
+                        break;
+
+                    // Red is the dominant color
+
+                    case 5:
+                        R = V;
+                        G = pv;
+                        B = qv;
+                        break;
+
+                    // Just in case we overshoot on our math by a little, we put these here. Since its a switch it won't slow us down at all to put these here.
+
+                    case 6:
+                        R = V;
+                        G = tv;
+                        B = pv;
+                        break;
+                    case -1:
+                        R = V;
+                        G = pv;
+                        B = qv;
+                        break;
+
+                    // The color is not defined, we should throw an error.
+
+                    default:
+                        //LFATAL("i Value error in Pixel conversion, Value is %d", i);
+                        R = G = B = V; // Just pretend its black/white
+                        break;
+                }
+            }
+            r = Clamp((int)(R * 255.0));
+            g = Clamp((int)(G * 255.0));
+            b = Clamp((int)(B * 255.0));
+        }
+
+        int Clamp(int i)
+        {
+            if (i < 0) return 0;
+            if (i > 255) return 255;
+            return i;
+        }
+
+        private async void ResetCopyLabel(Label label)
+        {
+            // wait 2 seconds before setting it back
+            await Task.Delay(2000);
+            label.Text = "copy";
+        }
+
+        private void copyPicture1HEX_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label7.Text);
+            copyPicture1HEX.Text = "copied!";
+
+            ResetCopyLabel((Label)sender);
+        }
+
+        private void copyPicture1RGB_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label8.Text);
+            copyPicture1RGB.Text = "copied!";
+
+            ResetCopyLabel((Label)sender);
+        }
+
+        private void copyPicture1HSL_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label9.Text);
+            copyPicture1HSL.Text = "copied!";
+
+            ResetCopyLabel((Label)sender);
+        }
+
+        private void copyPicture2HEX_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label4.Text);
+            copyPicture2HEX.Text = "copied!";
+
+            ResetCopyLabel((Label)sender);
+        }
+
+        private void copyPicture2RGB_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label5.Text);
+            copyPicture2RGB.Text = "copied!";
+
+            ResetCopyLabel((Label)sender);
+        }
+
+        private void copyPicture2HSL_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label6.Text);
+            copyPicture2HSL.Text = "copied!";
+
+            ResetCopyLabel((Label)sender);
+        }
+
+        private void copyPicture3HEX_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label3.Text);
+            copyPicture3HEX.Text = "copied!";
+
+            ResetCopyLabel((Label)sender);
+        }
+
+        private void copyPicture3RGB_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label2.Text);
+            copyPicture3RGB.Text = "copied!";
+
+            ResetCopyLabel((Label)sender);
+        }
+
+        private void copyPicture3HSL_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label1.Text);
+            copyPicture3HSL.Text = "copied!";
+
+            ResetCopyLabel((Label)sender);
+        }
+
+        private void copyPicture4HEX_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label10.Text);
+            copyPicture4HEX.Text = "copied!";
+
+            ResetCopyLabel((Label)sender);
+        }
+
+        private void copyPicture4RGB_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label11.Text);
+            copyPicture4RGB.Text = "copied!";
+
+            ResetCopyLabel((Label)sender);
+        }
+
+        private void copyPicture4HSL_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label12.Text);
+            copyPicture4HSL.Text = "copied!";
+
+            ResetCopyLabel((Label)sender);
+        }
+
+        private void copyPicture5HEX_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label13.Text);
+            copyPicture5HEX.Text = "copied!";
+
+            ResetCopyLabel((Label)sender);
+        }
+
+        private void copyPicture5RGB_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label14.Text);
+            copyPicture5RGB.Text = "copied!";
+
+            ResetCopyLabel((Label)sender);
+        }
+
+        private void copyPicture5HSL_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(label15.Text);
+            copyPicture5HSL.Text = "copied!";
+
+            ResetCopyLabel((Label)sender);
         }
     }
 }
